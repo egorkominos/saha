@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сайт с фоном</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url('https://i.pinimg.com/originals/8d/c3/2d/8dc32d9f2db3b491124588dd2ab8d16e.gif');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            height: 100vh;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        h1 {
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            font-size: 2.5em;
+            margin: 20px 0;
+        }
+        .image-container {
+            position: relative; /* Позволяет позиционировать внутреннее изображение */
+            display: inline-block; /* Устанавливаем блочный элемент для центрирования */
+        }
+        img {
+            max-width: 90%;
+            height: auto;
+            cursor: pointer;
+            transition: transform 0.3s;
+            display: block; /* Убираем пробелы под изображением */
+        }
+        .rotated {
+            transform: rotate(-90deg);
+        }
+        .inner-image {
+            position: absolute; /* Абсолютное позиционирование для внутреннего изображения */
+            top: 0;
+            left: 0;
+            width: 100%; /* Занимает всю ширину контейнера */
+            height: 100%; /* Занимает всю высоту контейнера */
+            z-index: 1; /* Устанавливаем z-index для внутреннего изображения */
+            opacity: 1; /* Полная непрозрачность */
+            display: none; /* Скрываем внутреннее изображение изначально */
+            object-fit: cover; /* Обеспечивает масштабирование изображения с сохранением пропорций */
+        }
+        .outer-image {
+            z-index: 2; /* Устанавливаем z-index для внешнего изображения */
+        }
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Добро пожаловать на мой сайт!</h1>
+    <div class="image-container">
+        <img class="inner-image" src="https://i.pinimg.com/564x/95/d6/9e/95d69e2212d3e6a5beb844a3b2e66a09.jpg" alt="Внутреннее изображение" />
+        <img id="animatedImage" class="outer-image" src="https://ltdfoto.ru/images/2024/11/09/fa2883910c05537c886c8950c0c4d325-Photoroom.png" alt="Изображение" />
+    </div>
+    
+    <script>
+        const image = document.getElementById('animatedImage');
+        const innerImage = document.querySelector('.inner-image');
+        let isRotated = false;
+        function toggleImageRotation() {
+            if (isRotated) {
+                image.classList.remove('rotated');
+                innerImage.style.display = 'none'; // Скрываем внутреннее изображение
+            } else {
+                image.classList.add('rotated');
+                innerImage.style.display = 'block'; // Показываем внутреннее изображение
+            }
+            isRotated = !isRotated;
+        }
+        image.addEventListener('click', toggleImageRotation);
+    </script>
+</body>
+</html>
+
+Найти еще
